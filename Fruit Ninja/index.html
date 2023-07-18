@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Fruit Ninja</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+        <style>
+        html{
+            background: radial-gradient(circle,#fff,#ccc);
+         }  
+        #container{
+            height: 600px;
+            background-color: #9DD2EA;
+            width: 750px;
+            margin:10px auto;
+            box-shadow: 0px 4px 0px 0px #009de4 ;
+            position:relative;
+            padding: 20px;
+        }
+        #score{
+            position: absolute;
+            left: 700px;
+            background-color: #F1FF92;
+            padding: 11px;
+            box-shadow: 0px 4px 0px 0px #9da853;
+            color: #888E5F;
+        }
+        #gameBox{
+            height: 400px;
+            width: 650px;
+            margin: 50px auto 10px auto ;
+            background-color: white;
+            box-shadow: 0px 4px #535aa8;
+            text-align: center;
+            font-size: 100px;
+            position: relative;
+            overflow: hidden;
+        } 
+        #inst{
+            width: 450px;
+            height: 50px;
+            background-color: #B481D9;
+            text-align: center;
+            line-height: 45px;
+            margin: 10px auto;
+            box-shadow: 0px 4px 0px 0px #8153a8 ;
+        }
+        #submit{
+            width: 78px;
+            background-color: rgba(255, 255, 255,0.5);
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0px 4px rgba(0,0,0,0.2);
+            transition:all 0.2s ;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 3px;
+        }
+        #submit:active{
+            background-color: #9C89F6;
+            color: white;
+            box-shadow: 0px 0px #6b54d3;
+            top: 4px;
+        }
+        #gameover{
+            width: 500px;
+            height: 200px;
+            background: linear-gradient(#F3CA6B,#F3706C);
+            text-align: center;
+            font-size: 2em;
+            text-transform: uppercase;
+            position: absolute;
+            top: 170px;
+            left: 145px;
+            z-index: 2;
+            color:white ;
+            display: none;
+        
+        }
+        #lives{
+            width: 80px;
+            position: absolute;
+            /*top:395px;*/
+            background-color: #F1FF92;
+            padding: 10px;
+            box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+            border-radius:3px ;
+            box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+            /*visibility: hidden;*/
+            display: none;
+        }
+        .life{
+            width: 16px;
+            height: 16x;
+            margin:0 5px ;
+        }
+        .fruit{
+            display: none;
+            position: absolute;
+        }
+        </style>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+           <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    </head>
+    <body>
+      <div class="ui-corner-all" id="container">
+        
+         <div class="ui-corner-all"id="score">
+             Score: <span id="scoreValue">0</span>
+         </div>
+         <div id="lives">
+              
+         </div>
+         <div class="ui-corner-all" id="gameBox">
+             <img id="fruit1" class="fruit">
+         </div>
+         <div class="ui-corner-all" id="gameover">
+         </div>
+         <div class="ui-corner-all" id="inst">
+            Catch Fruits
+         </div>
+         <div class="ui-corner-all" id="submit">
+           Start Game
+         </div>
+      </div>
+      <audio id="slicesound">
+        <source src="sounds/slicefruit.mp3"></source>
+      </audio>
+      <script src="jQuery.js" ></script>
+    </body>
+</html>
