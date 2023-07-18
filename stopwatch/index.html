@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+ <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+          <title>Stopwatch</title>
+        <style>
+            body{
+                background: url(image/clock-3179167__340.jpg) center center fixed;
+                background-size: cover;
+                color: whitesmoke;
+            }
+            #header{
+                text-align: center;
+                font-size: 7vw;
+                color: white;
+            }
+            #lap{
+                text-align: right;
+                font-size: 4vw;
+                color: white;
+
+            }
+            #time{
+                text-align: center;
+                font-size: 10vw;
+                color: white;
+
+            }
+            #controlsContainer{
+                margin-bottom: 100px;
+            }
+            .control{
+                color: white;
+                background-color: #d7A04e;
+                height: 10vw;
+                width: 10vw;
+                border-radius: 100%;
+                text-align: center;
+                padding: 20% 0;
+                font-size: 2.5vw;
+                cursor: pointer;
+            }
+            .control:active{
+                background-color: white;
+                color:#d7A04e ;
+            }
+            #laps{
+                max-height: 270px;
+                overflow-y: scroll;
+                color: white;
+
+            }
+            .lap{
+                height: 50px;
+                border-bottom: 1px solid white;
+                margin: 15px;
+            }
+            .laptimetittle{
+                font-size: 1.5em;
+                float: left;
+                color: white;
+
+            }
+            .laptime{
+                font-size: 2em;
+                float: right;
+                color: white;
+            }
+        </style>
+         <link href="css/bootstrap.min.css" rel="stylesheet">    
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div id="header">Stopwatch</div> 
+            <div id="lap"><span id="lapmin">00</span>:<span id="lapsec">00</span>:<span id="lapceti">00</span></div>
+            <div id="time"><span id="timemin">00</span>:<span id="timesec">00</span>:<span id="timeceti">00</span></div>
+            <div id="controlsContainer" class="row">
+                <div class="col-xs-2 col-xs-offset-4">
+                    <div id="startButton"class="control">Start</div>
+                    <div id="stopButton"class="control">Stop</div>
+                    <div id="resumeButton"class="control">Resume</div>
+                </div>
+                <div class="col-xs-2">
+                    <div id="lapButton" class="control">Lap</div>
+                    <div id="resetButton" class="control">Reset</div>
+                </div>
+            </div>
+            <div id="laps"></div>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+     <!-- Include all compiled plugins (below), or include
+    individual files as needed -->
+     <script src="js/bootstrap.min.js"></script>
+     <script>
+        $(function(){
+            var mode=0;
+            var tcounter=0;
+            var lcounter=0;
+            var action;
+            var lnumber=0;
+
+            var tMin, tSec,tCenti,lMIn,lSec,lCenti;
+            shows("#startButton","#lapButton");
+            $("#startButton").click(function(){
+                mode=1;
+                shows("#stopButton","#lapButton");
+                startAction();
+            });
+            $("#stopButton").click(function(){
+                shows("#resumeButton","#resetButton");
+                clearInterval(action);
+            });
+            $("#resumeButton").click(function(){
+                shows("#stopButton","#resetButton");
+                startAction();
+            });
+            $("#resetButton").click(function(){
+                location.reload();
+            });
+            $("#lapButton").click(function(){
+                if(mode)
+                {
+                    clearInterval(action);
+                    lcounter=0;
+                    addlap();
+                    startAction();
+                }
+            });
+            function shows(x,y){
+                $(".control").hide();
+                $(x).show();
+                $(y).show();
+            }
+        
+            function startAction(){
+                action=setInterval(function(){
+                    tcounter++;
+                    lcounter++;
+                    updatetime();
+                },10);
+            }
+            function updatetime(){
+                tMin=Math.floor(tcounter/6000);
+                tSec=Math.floor((tcounter%6000)/100);
+                tCenti=(tcounter%6000)%100;
+                $("#timemin").text(format(tMin));
+                $("#timesec").text(format(tSec));
+                $("#timeceti").text(format(tCenti));
+
+                lMIn=Math.floor(lcounter/6000);
+                lSec=Math.floor((lcounter%6000)/100);
+                lCenti=(lcounter%6000)%100;
+                $("#lapmin").text(format(lMIn));
+                $("#lapsec").text(format(lSec));
+                $("#lapceti").text(format(lCenti));
+            }
+            function format(number){
+                if(number<10){
+                    return '0'+number;
+                }
+                else{
+                    return number;
+                }
+            }
+            function addlap(){
+                lnumber++;
+                var mylapdetails=
+                '<div class="lap">'+
+                    '<div class="laptimetittle">'+'Lap'+lnumber+'</div>'+
+                    '<div class="laptime">'+
+                        '<span>'+format(lMIn)+'</span>'+
+                        ':<span>'+format(lSec)+'</span>'+
+                        ':<span>'+format(lCenti)+'</span>'+
+                    '</div>'+
+                '</div>';
+                $(mylapdetails).prependTo("#laps");
+            }
+        });  
+     </script>    
+</html>
