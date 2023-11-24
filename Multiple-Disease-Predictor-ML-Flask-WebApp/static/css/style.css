@@ -1,0 +1,76 @@
+/* Reset some default styles for consistency */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #060;
+}
+
+/* Header area with menus */
+header {
+  background-color: #5a5f9c;
+  height: 50px; /* Adjusted height for better visibility */
+  width: 100%;
+  opacity: 0.9; /* Increased opacity for a stronger background color */
+  margin-bottom: 20px;
+  position: fixed; /* Fixed positioning to make the navbar stick to the top */
+  top: 0;
+  z-index: 100; /* Ensure it's above other content */
+}
+
+header h1.logo {
+  margin: 0;
+  font-size: 1.5em;
+  color: rgba(236, 192, 192, 0.9); /* Adjusted color and opacity */
+  text-transform: uppercase;
+  float: left;
+  margin-left: 20px; /* Increased margin for better alignment */
+  margin-top: 10px; /* Adjusted margin for vertical alignment */
+  transition: color 0.3s; /* Added a smooth color transition on hover */
+}
+
+header h1.logo:hover {
+  color: rgba(203, 58, 58, 0.9); /* Adjusted hover color and opacity */
+  text-decoration: none;
+}
+
+/* Center the logo and menus in the container */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px; /* Added horizontal padding for better spacing */
+}
+
+/* Menus on the header */
+.menu {
+  float: right;
+  margin-top: 20px; /* Adjusted margin for better alignment */
+}
+
+.menu li {
+  display: inline;
+}
+
+.menu li + li {
+  margin-left: 20px; /* Reduced the margin for better spacing */
+}
+
+/* Menu link styles */
+.menu li a {
+  color: rgb(250, 245, 245);
+  text-decoration: none;
+  font-size: 16px; /* Slightly reduced font size for better readability */
+  transition: color 0.3s; /* Added a smooth color transition on hover */
+}
+
+/* Mouse cursor over link */
+.menu li a:hover {
+  color: red;
+}
+
+/* Background color for the first menu item */
+.menu li:first-child a {
+  background-color: #d83810;
+  padding: 5px 10px; /* Added padding for a more defined button-like appearance */
+  border-radius: 5px; /* Rounded corners for the button */
+}

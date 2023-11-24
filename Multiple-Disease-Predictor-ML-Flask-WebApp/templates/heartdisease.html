@@ -1,0 +1,142 @@
+{%block content%}
+
+
+<style>
+  body {
+    background-image: url('/static/backgroundimage.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #333333;
+    color: #fff;
+    font-family: "Arial", sans-serif;
+  }
+
+  .form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  .form-style-3 {
+    background: linear-gradient(135deg, #ff7ea5, #ff00a7);
+    border-radius: 10px;
+    border: 1px solid #f5ac1b;
+    box-shadow: 0 0 15px rgba(255, 229, 229, 0.7);
+    margin: 20px 0;
+    padding: 20px;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .form-style-3 legend {
+    font-size: 25px;
+    color: #f21bb2;
+    background: #FFF4F4;
+    border: 1px solid #FFD2D2;
+    border-radius: 5px 5px 0 0;
+    padding: 3px 8px;
+  }
+
+  .form-style-3 label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .form-style-3 label>span {
+    float: left;
+    width: 350px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #fff;
+  }
+
+  .form-style-3 input[type="text"],
+  .form-style-3 input[type="number"],
+  .form-style-3 select,
+  .form-style-3 textarea {
+    width: 50%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #FFC2DC;
+    border-radius: 3px;
+    background: #FFEFF6;
+    color: #121211;
+    box-shadow: inset 1px 1px 4px #FFD5E7;
+  }
+
+  .form-style-3 input[type="submit"],
+  .form-style-3 input[type="button"] {
+    background: #7495c4;
+    border: 3px solid #0d0d0d;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 15px 25px;
+    border-radius: 3px;
+    box-shadow: inset -1px -1px 3px #FF62A7;
+  }
+
+  .form-style-3 input[type="submit"]:hover,
+  .form-style-3 input[type="button"]:hover {
+    background: #6b8ea9;
+  }
+
+  .form-style-3 label span {
+    font-weight: bold;
+  }
+
+  .form-style-3 h2 {
+    font-size: 20px;
+    text-align: center;
+    animation: pulse 2s infinite;
+    color: #800080;
+  }
+
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+</style>
+<body>
+  <h1>Heart Disease Prediction</h1>
+  <div class="form-container">
+    <form action="{{url_for('predictheartdisease')}}" method="post" class="form-style-3">
+      <fieldset>
+        <legend>Please Provide The Details</legend>
+        <h2>{{output_text}}</h2>
+        <label for="field1"><span>Age</span><input type="number" step="0.00000000000001" placeholder="Enter age" name="field1" required="required" /></label>
+        <label for="field2"><span>Sex</span><input type="number" step="0.00000000000001" placeholder="0 for female, 1 for male" name="field2" required="required" /></label>
+        <label for="field3"><span>Chest Pain (CP)</span><input type="number" step="0.00000000000001" placeholder="0, 1, 2, or 3" name="field3" required="required" /></label>
+        <label for="field4"><span>Resting Blood Pressure</span><input type="number" step="0.00000000000001" placeholder="94-200" name="field4" required="required" /></label>
+        <label for="field5"><span>Cholesterol (Chol)</span><input type="number" step="0.00000000000001" placeholder="126-564" name="field5" required="required" /></label>
+        <label for="field6"><span>Fasting Blood Sugar (FBS)</span><input type="number" step="0.00000000000001" placeholder="0 or 1" name="field6" required="required" /></label>
+        <label for="field7"><span>Resting ECG</span><input type="number" step="0.00000000000001" placeholder="0, 1, or 2" name="field7" required="required" /></label>
+        <label for="field8"><span>Max Heart Rate (Thalach)</span><input type="number" step="0.00000000000001" placeholder="71-202" name="field8" required="required" /></label>
+        <label for="field9"><span>Exercise-Induced Angina (Exang)</span><input type="number" step="0.00000000000001" placeholder="0 or 1" name="field9" required="required" /></label>
+        <label for="field10"><span>ST Depression (Oldpeak)</span><input type="number" step="0.00000000000001" placeholder="0-6.20" name="field10" required="required" /></label>
+        <label for="field11"><span>Slope</span><input type="number" step="0.00000000000001" placeholder="0, 1, or 2" name="field11" required="required" /></label>
+        <label for="field12"><span>Number of Major Vessels (Ca)</span><input type="number" step="0.00000000000001" placeholder="0-4" name="field12" required="required" /></label>
+        <label for="field13"><span>Thalassemia (Thal)</span><input type="number" step="0.00000000000001" placeholder="0, 1, 2, or 3" name="field13" required="required" /></label>
+        <label><span></span><input type="submit" value="Predict" /></label>
+      </fieldset>
+    </form>
+  </div>
+</body>
+  {%endblock%}
